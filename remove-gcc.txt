@@ -11,8 +11,6 @@ bin/aarch64-elf-cpp
 bin/aarch64-elf-dwp
 bin/aarch64-elf-g++
 bin/aarch64-elf-gcc-12.0.1
-bin/aarch64-elf-gcc-ar
-bin/aarch64-elf-gcc-nm
 bin/aarch64-elf-gcc-ranlib
 bin/aarch64-elf-gprof
 bin/aarch64-elf-ld.bfd
@@ -30,8 +28,6 @@ bin/arm-eabi-cpp
 bin/arm-eabi-dwp
 bin/arm-eabi-g++
 bin/arm-eabi-gcc-12.0.1
-bin/arm-eabi-gcc-ar
-bin/arm-eabi-gcc-nm
 bin/arm-eabi-gcc-ranlib
 bin/arm-eabi-gprof
 bin/arm-eabi-ld.bfd
