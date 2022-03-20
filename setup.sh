@@ -2,7 +2,7 @@
 
 apt-get dist-upgrade -y -qq && apt-get upgrade -y -qq && apt-get update -y -qq
 ln -snf /usr/share/zoneinfo/Asia/Kolkata /etc/localtime && echo Asia/Kolkata > /etc/timezone
-apt-get install --no-install-recommends -y -qq bc bison ca-certificates cpio curl file gcc git lib{c6,c,ssl,xml2}-dev make python2 unzip zip
+apt-get install --no-install-recommends -y -qq aria2 bc bison ca-certificates cpio curl file gcc git lib{c6,c,ssl,xml2}-dev make python2 unzip zip
 apt-get autoremove -y && apt-get clean autoclean && rm -rf /var/lib/apt/lists/*
 
 t2h() {
