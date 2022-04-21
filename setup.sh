@@ -4,6 +4,7 @@ apt-get dist-upgrade -y -qq && apt-get upgrade -y -qq && apt-get update -y -qq
 ln -snf /usr/share/zoneinfo/Asia/Kolkata /etc/localtime && echo Asia/Kolkata > /etc/timezone
 apt-get install --no-install-recommends -y -qq aria2 bc bison ca-certificates cpio curl file gcc git lib{c6,c,ssl,xml2}-dev make python2 unzip zip
 apt-get autoremove -y && apt-get clean autoclean && rm -rf /var/lib/apt/lists/*
+curl -L https://github.com/AkihiroSuda/clone3-workaround/releases/download/v1.0.0/clone3-workaround.x86_64 -o noclone3 && chmod +x noclone3
 
 t2h() {
     echo "$1" | od -An -tx1 | tr -d '\n' | head -n1 | sed "s/ 0a$//g;s/ /\\\x/g"
