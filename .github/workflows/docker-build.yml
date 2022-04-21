@@ -27,5 +27,4 @@ jobs:
           context: .
           push: true
           tags: |
-            jebaitedneko/kernel:latest
-            seralij556/kernel:latest
+            atomxorg/ubuntu:latest
