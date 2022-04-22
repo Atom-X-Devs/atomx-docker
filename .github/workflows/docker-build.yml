@@ -27,4 +27,4 @@ jobs:
           context: .
           push: true
           tags: |
-            atomxorg/ubuntu:latest
+            notzeetaa/ubuntu:latest
