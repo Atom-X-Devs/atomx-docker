@@ -27,7 +27,7 @@ get() {
     find "/usr/${3}" -exec chmod +x {} \; && rem "$3"
 }
 
-get mvaisakh/gcc-arm64 gcc-master gcc64
+get mvaisakh/gcc-arm64-gnu main gcc64
 get mvaisakh/gcc-arm gcc-master gcc32
 curl -LSs https://gitlab.com/ElectroPerf/atom-x-clang/-/archive/atom-15/atom-x-clang-atom-15.zip -o "clang".zip
 unzip "clang".zip -d. && rm "clang".zip && mv -v "atom-x-clang-atom-15" "/usr/clang"
