@@ -1,71 +1,31 @@
-name: Build and Push
+name: Arch Image
 
 on:
+  schedule:
+    - cron: '0 0 * * *'
+  workflow_dispatch:
   push:
     branches:
-      - main
-  workflow_dispatch:
-
-env:
-  # Change these values if you have forked it for your own works
-  # Use Lowercase vaue of your Username
-  GITHUB_USERNAME: sushrut1101
-  GITHUB_EMAIL: guptasushrut@gmail.com
-
-  GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
-
-  # Image name and tag. MUST be lowercase
-  IMAGE_NAME: docker
+      - 'arch'
 
 jobs:
-  arch:
+  docker:
     runs-on: ubuntu-latest
-    env:
-      IMAGE_TAG: arch
     steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-
-      - name: Configuring git
-        run: |
-          git config --global user.name $GITHUB_USERNAME
-          git config --global user.email $GITHUB_EMAIL
-
-      - name: Logging in to Docker
-        run: |
-          echo $GITHUB_TOKEN | docker login ghcr.io -u $GITHUB_USERNAME --password-stdin
-
-      - name: Building the Image
-        run: |
-          docker build -t ghcr.io/${GITHUB_USERNAME}/${IMAGE_NAME}:${IMAGE_TAG} -f arch/Dockerfile .
-          echo -e "\033[0;32m""### Build Completed Successfully!""\033[0m"
-
-      - name: Pushing the Image
-        run: |
-          docker push ghcr.io/${GITHUB_USERNAME}/${IMAGE_NAME}:${IMAGE_TAG}
-
-  fedora:
-    runs-on: ubuntu-latest
-    env:
-      IMAGE_TAG: latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-
-      - name: Configuring git
-        run: |
-          git config --global user.name $GITHUB_USERNAME
-          git config --global user.email $GITHUB_EMAIL
-
-      - name: Logging in to Docker
-        run: |
-          echo $GITHUB_TOKEN | docker login ghcr.io -u $GITHUB_USERNAME --password-stdin
-
-      - name: Building the Image
-        run: |
-          docker build -t ghcr.io/${GITHUB_USERNAME}/${IMAGE_NAME}:${IMAGE_TAG} -f fedora/Dockerfile .
-          echo -e "\033[0;32m""### Build Completed Successfully!""\033[0m"
-
-      - name: Pushing the Image
-        run: |
-          docker push ghcr.io/${GITHUB_USERNAME}/${IMAGE_NAME}:${IMAGE_TAG}
+      -
+        name: Checkout
+        uses: actions/checkout@v2
+      -
+        name: Login to DockerHub
+        uses: docker/login-action@v1
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+      -
+        name: Build and push
+        uses: docker/build-push-action@v2
+        with:
+          context: .
+          push: true
+          tags: |
+            atomxorg/arch-linux:latest
