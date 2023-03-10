@@ -68,6 +68,10 @@ sudo -u testuser yay -S --needed --noconfirm \
 # Try to update yay
 sudo -u testuser yay -S --noconfirm yay
 
+# Update ZSTD v1.5.2-8
+wget https://github.com/dakkshesh07/zstd-pkgbuild/releases/download/1.5.2-8/zstd-1.5.2-8-x86_64.pkg.tar.zst
+pacman -U --noconfirm zstd-1.5.2-8-x86_64.pkg.tar.zst
+
 # zsh
 chsh -s /bin/zsh root
 sh -c "$(curl -sL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
