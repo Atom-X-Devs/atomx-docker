@@ -8,20 +8,20 @@ USER root
 WORKDIR /root
 
 # Remove Files before copying the Rootfs
-COPY ./arch/remove /tmp/
+COPY ./remove /tmp/
 RUN rm -rf $(< /tmp/remove)
 
 # Copy Rootfs and Scripts
-COPY ./arch/rootfs /
+COPY ./rootfs /
 COPY ./common/rootfs /
 COPY ./scripts /tmp/scripts/
 
 # Install Packages
-COPY ./arch/install_packages.sh /tmp/
+COPY ./install_packages.sh /tmp/
 RUN bash /tmp/install_packages.sh
 
 # Configuration
-COPY ./arch/config.sh /tmp/
+COPY ./config.sh /tmp/
 RUN bash /tmp/config.sh
 
 # Remove the Scripts we used
